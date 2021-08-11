@@ -1,0 +1,15 @@
+@import "../../assets/style/abstracts/placeholders";
+.productCard {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.01);
+    border-color: $mainColor;
+  }
+  .productTitle {
+    @extend %ellipsisTxt;
+    &:hover {
+      color: $secondryColor;
+    }
+  }
+}

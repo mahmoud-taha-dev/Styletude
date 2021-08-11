@@ -1,0 +1,14 @@
+@import "./assets/style/abstracts/variables";
+
+.Toastify__toast--dark {
+  background-color: $mainColor !important;
+}
+.Toastify__progress-bar {
+  background-color: $whiteColor !important;
+}
+.Toastify__toast--warning {
+  background-color: #d1ac09 !important;
+}
+button:disabled {
+  cursor: not-allowed;
+}

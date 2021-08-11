@@ -1,0 +1,30 @@
+@import "./variables";
+%ellipsisTxt {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+%btn {
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+%disabledBtn {
+  @extend %btn;
+  background-color: #9098a0;
+  color: $whiteColor;
+  cursor: not-allowed;
+}
+%pageTitle {
+  color: $mainColor;
+  text-align: center;
+  font-size: 2rem;
+  &::after {
+    content: "";
+    display: block;
+    border-bottom: 5px solid $mainColor;
+    width: 60px;
+    margin: 20px auto;
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../assets/style/abstracts/placeholders";
+.cartCard {
+  border: 1px solid rgba(128, 128, 128, 0.158);
+  border-radius: 5px;
+  .productImgCont {
+    border-radius: 5px 0px 0px 5px;
+    .productImg {
+      border-radius: 5px 0px 0px 5px;
+      object-fit: cover;
+    }
+  }
+  .productTitle {
+    @extend %ellipsisTxt;
+  }
+  .quantity {
+    font-size: 1.2rem;
+  }
+  .quantityBtn {
+    background-color: $mainColor;
+    color: $whiteColor;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 25px;
+    margin: 0 1px;
+    border: none;
+
+    &:hover {
+      background-color: $secondryColor;
+      color: $mainColor;
+    }
+    &:disabled {
+      background-color: #18385ac7;
+    }
+  }
+  .delBtn {
+    background-color: rgb(139, 22, 22);
+    color: $whiteColor;
+    @extend %btn;
+    &:hover {
+      background-color: rgba(139, 22, 22, 0.836);
+    }
+  }
+}

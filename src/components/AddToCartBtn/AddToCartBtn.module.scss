@@ -1,0 +1,5 @@
+@import "../../assets/style/abstracts/placeholders";
+
+.notAvailabble {
+  @extend %disabledBtn;
+}
