@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "./useLocalStorage";
-import { addToCart, changeCart } from "../../redux/features/cart/cartActions";
+import {
+  addToCart,
+  changeCart,
+  clearCart,
+} from "../../redux/features/cart/cartActions";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 const useCart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const [cartStorage, setCartStorage] = useLocalStorage("cart", {
+  const [, setCartStorage] = useLocalStorage("cart", {
     items: [],
     totalQuantity: 0,
   });
@@ -75,11 +79,16 @@ const useCart = () => {
       );
   };
 
+  const clearCartInStore = () => {
+    dispatch(clearCart());
+    localStorage.removeItem("cart");
+  };
   return {
     addProductToCart,
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
+    clearCartInStore,
   };
 };
 

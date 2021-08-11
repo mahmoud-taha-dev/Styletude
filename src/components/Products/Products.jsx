@@ -1,9 +1,9 @@
 import React from "react";
-import { useLocalStorage } from "../../utils/customHooks/useLocalStorage";
+import { useSelector } from "react-redux";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./Products.module.scss";
 const Products = () => {
-  const [products, setProducts] = useLocalStorage("products", []);
+  const products = useSelector((state) => state.products);
   return (
     <div className={styles.productsGrid}>
       {products.map((item) => (

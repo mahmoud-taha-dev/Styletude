@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import AddToCartBtn from "../../components/AddToCartBtn/AddToCartBtn";
 import PageContainer from "../../components/PageContainer/PageContainer";
-import { useLocalStorage } from "../../utils/customHooks/useLocalStorage";
+import useCart from "../../utils/customHooks/useCart";
 
 const ViewProduct = () => {
   const { id } = useParams();
-  const [products, setProducts] = useLocalStorage("products", []);
+  const products = useSelector((state) => state.products);
   const [productItem, setproductItem] = useState(null);
+  const { addProductToCart } = useCart();
   useEffect(() => {
     const product = products.find((el) => el.id === id);
     setproductItem(product);
@@ -31,7 +33,10 @@ const ViewProduct = () => {
               <p>{productItem.brand}</p>
               <p>{productItem.category}</p>
               <p>{productItem.description}</p>
-              <AddToCartBtn productItem={productItem} />
+              <AddToCartBtn
+                addProductToCart={addProductToCart}
+                productItem={productItem}
+              />
             </div>
           </div>
         )}

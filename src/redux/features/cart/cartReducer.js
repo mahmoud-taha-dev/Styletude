@@ -1,8 +1,10 @@
-import { ADD_TO_CART, CHANGE_CART } from "./cartConstants";
+import { ADD_TO_CART, CHANGE_CART, CLEAR_CART } from "./cartConstants";
 
-const initialState = JSON.parse(
-  localStorage.getItem("cart") || '{"items" : [], "totalQuantity" : 0}'
-);
+const cartStorage = localStorage.getItem("cart");
+const initialState = (cartStorage && JSON.parse(cartStorage)) || {
+  items: [],
+  totalQuantity: 0,
+};
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,6 +18,11 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+      };
+    case CLEAR_CART:
+      return {
+        items: [],
+        totalQuantity: 0,
       };
     default:
       return state;

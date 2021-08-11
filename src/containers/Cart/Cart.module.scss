@@ -9,6 +9,14 @@
   font-weight: 600;
   margin-top: 5px;
 }
+.clearBtn {
+  @extend %btn;
+  background-color: rgb(196, 7, 7);
+  color: $whiteColor;
+  &:hover {
+    background-color: rgba(196, 7, 7, 0.842);
+  }
+}
 .cartGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

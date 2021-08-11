@@ -1,11 +1,10 @@
 import React from "react";
-import useCart from "../../utils/customHooks/useCart";
 import styles from "./CartCard.module.scss";
 import MainBtn from "../MainBtn/MainBtn";
 import { useHistory } from "react-router-dom";
 
-const CartCard = ({ productItem }) => {
-  const { increaseQuantity, decreaseQuantity, deleteProduct } = useCart();
+const CartCard = ({ productItem, functions }) => {
+  const [increaseQuantity, decreaseQuantity, deleteProduct] = functions;
   const history = useHistory();
   return (
     <div className={`row m-0 p-0 ${styles.cartCard}`}>
@@ -48,6 +47,13 @@ const CartCard = ({ productItem }) => {
           </div>
         </div>
         <div className="d-flex justify-content-center mt-auto mb-3">
+          <MainBtn
+            text="View"
+            style={`mx-2`}
+            action={() => {
+              history.push(`/products/${productItem.id}`);
+            }}
+          />
           <button
             className={styles.delBtn}
             onClick={() => {
@@ -56,13 +62,6 @@ const CartCard = ({ productItem }) => {
           >
             Remove
           </button>
-          <MainBtn
-            text="View"
-            style={`mx-2`}
-            action={() => {
-              history.push(`/products/${productItem.id}`);
-            }}
-          />
         </div>
       </div>
     </div>

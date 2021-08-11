@@ -1,0 +1,4 @@
+@import "../../assets/style/abstracts/placeholders";
+.title {
+  @extend %pageTitle;
+}

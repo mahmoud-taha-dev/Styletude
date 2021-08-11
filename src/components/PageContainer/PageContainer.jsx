@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const PageContainer = ({ title, children }) => {
   useEffect(() => {
@@ -7,4 +7,4 @@ const PageContainer = ({ title, children }) => {
   return <div className="container py-5 mt-5">{children}</div>;
 };
 
-export default PageContainer;
+export default React.memo(PageContainer);

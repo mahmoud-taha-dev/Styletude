@@ -1,10 +1,8 @@
-import useCart from "../../utils/customHooks/useCart";
+import React from "react";
 import MainBtn from "../MainBtn/MainBtn";
 import styles from "./AddToCartBtn.module.scss";
 
-const AddToCartBtn = ({ productItem }) => {
-  const { addProductToCart } = useCart();
-
+const AddToCartBtn = ({ productItem, addProductToCart }) => {
   return (
     <>
       {productItem?.countInStock ? (
@@ -24,4 +22,4 @@ const AddToCartBtn = ({ productItem }) => {
   );
 };
 
-export default AddToCartBtn;
+export default React.memo(AddToCartBtn);

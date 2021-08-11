@@ -7,10 +7,13 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
+import useCart from "../../utils/customHooks/useCart";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import styles from "./ProductCard.module.scss";
 const ProductCard = ({ productItem }) => {
   const history = useHistory();
+  const { addProductToCart } = useCart();
+
   return (
     <Card
       className={styles.productCard}
@@ -33,7 +36,10 @@ const ProductCard = ({ productItem }) => {
         </CardSubtitle>
         <CardText>{`${productItem.price} EGP`}</CardText>
         <div className="d-flex justify-content-center">
-          <AddToCartBtn productItem={productItem} />
+          <AddToCartBtn
+            addProductToCart={addProductToCart}
+            productItem={productItem}
+          />
         </div>
       </CardBody>
     </Card>

@@ -1,8 +1,6 @@
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useLocalStorage } from "./utils/customHooks/useLocalStorage";
-
 //Routing
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -13,6 +11,9 @@ import Cart from "./containers/Cart/Cart";
 import ViewProduct from "./containers/ViewProduct/ViewProduct";
 import NotFoundPage from "./containers/NotFoundPage/NotFoundPage";
 import { ToastContainer } from "react-toastify";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addProducts } from "./redux/features/products/productsActions";
 
 //Dummy Data
 const items = [
@@ -141,7 +142,10 @@ const items = [
 ];
 
 const App = () => {
-  const [products, setProducts] = useLocalStorage("products", items);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(addProducts(items));
+  }, []);
   return (
     <Router>
       <NavBar />
